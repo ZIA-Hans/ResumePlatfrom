@@ -5,6 +5,8 @@
             <Label label="内容" />
             <Input 
               :defaultVal="currentResumeComponent.componentInnerText"
+              updateProp="componentInnerText"
+              @updateContent="updateContent"
             />
         </div>
     </div>
@@ -15,6 +17,8 @@
             <Label label="图片路径" />
             <Input 
              :defaultVal="currentResumeComponent.componentInnerText"
+             updateProp="componentInnerText"
+             @updateContent="updateContent"
             />
         </div>
 
@@ -42,9 +46,13 @@ export default defineComponent({
         const havenTextModule = ['Button', 'AText'];
         const currentResumeComponent = computed(() => store.state.currentResumeComponent);
 
+        function updateContent(changeVal) {
+            store.commit('updateComponentInner', changeVal);
+        } 
         return {
             havenTextModule,
-            currentResumeComponent
+            currentResumeComponent,
+            updateContent
         }
     },
 })

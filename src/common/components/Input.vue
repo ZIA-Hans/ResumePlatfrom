@@ -1,7 +1,7 @@
 <template>
     <div class="my-input">
         <el-color-picker v-model="color" size="small" v-if="type === 'color'" @change="ChangeVal" />
-        <input type="text" placeholder="Please Input" class="input" v-model="color">
+        <input type="text" placeholder="Please Input" class="input" v-model="color" @change="changeContent">
     </div>
 </template>
 
@@ -29,13 +29,20 @@ export default defineComponent({
         const color = defaultVal;
 
         function ChangeVal(msg) {
+            console.log(msg);
             context.emit('updateInput', {
                 [updateProp]: msg
             });
         }
+
+        function changeContent(e) {
+            // console.log(e.target.value);
+            context.emit('updateContent', e.target.value)
+        }
         return {
             color,
-            ChangeVal
+            ChangeVal,
+            changeContent
         }
     },
 })

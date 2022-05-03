@@ -8,6 +8,7 @@
     title="Tips"
     width="70%"
     :before-close="handleClose"
+    destroy-on-close
   >
 
     <Wrapper :dataList = experienceList>

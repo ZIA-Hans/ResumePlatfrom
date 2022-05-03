@@ -1,11 +1,13 @@
 <template>
     <div class="cover" :style="styleObj">
-        <img :src="propVal">
+        <img :src="propVal" :style="styleObj">
     </div>
+    <!-- <img class="cover" :src="propVal" :style="styleObj"> -->
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+// import { getWantProps } from '../../utils/componentUtils'
 
 export default defineComponent({
     props: {
@@ -15,8 +17,17 @@ export default defineComponent({
         },
         styleObj: Object
     },
-    setup() {
-        
+    setup(props) {
+        // function getWantProps() {
+        //   console.log(props.styleObj.width);
+        //   // return {
+        //   //   width: props.styleObj.width,
+        //   //   height: props.styleObj.height
+        //   // }
+        // }
+        return {
+          // getWantProps
+        }
     },
 })
 </script>
@@ -37,7 +48,6 @@ export default defineComponent({
     right: 0px;
     text-align: center;
     background-color: transparent;
-    // background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
     /*这里显示的内容为title属性对应的值*/
     content: attr(title);
@@ -46,10 +56,10 @@ export default defineComponent({
   }
 
   img {
-    // width: 100%;
-    // height: 100%;
-    width: 242px;
-    height: 130px;
+    width: 100%;
+    height: 100%;
+    // width: 242px;
+    // height: 130px;
   }
 }
 img {

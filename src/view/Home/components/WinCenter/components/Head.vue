@@ -2,7 +2,7 @@
     <div class="operationBar">
             <el-button plain @click="goback">返回</el-button>
             <el-switch
-                v-model="isReapeat"
+                v-model="isFullDisplay"
                 class="mb-2"
                 inactive-text="全屏显示"
             />
@@ -15,8 +15,8 @@
                 <input type="text" placeholder="Please Input" class="input" :value="height" @change="changeHeight">
             </div>
             <el-button plain @click="clearAllEditor" :disabled="editorComponentsList.length === 0">清空画布</el-button>
-            <el-button plain  :disabled="editorComponentsList.length === 0">保存</el-button>
-            <el-button plain @click="deleteComponent">选择工程</el-button>
+            <el-button plain  :disabled="editorComponentsList.length === 0" @click="saveComData">保存</el-button>
+            <el-button plain @click="exportComJSON">导出画布数据</el-button>
     </div>
 </template>
 
@@ -24,6 +24,8 @@
 import { computed, defineComponent, ref } from 'vue'
 import router from '@/router';
 import store from '@/store';
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { setItem } from '../../../../../utils/resumeUtils';
 
 export default defineComponent({
     props: {
@@ -37,7 +39,15 @@ export default defineComponent({
         }
     },
     setup(props, ctx) {
-        const isReapeat = ref(false);
+        // const isReapeat = ref(false);
+        const isFullDisplay = computed({
+            get() {
+                return store.state.isFullDisplay
+            },
+            set() {
+                store.commit('changeScreenStatus')
+            }
+        });
         
         function goback(e) {
             router.go(-1);
@@ -65,8 +75,30 @@ export default defineComponent({
             store.commit('deleteComponent', currentComponentIndex.value);
             store.commit('clearCurrentComponentStatus');
         }
+        const resumeComponentsList = store.state.resumeComponentsList;
+
+        function saveComData(e) {
+            setItem('resumeComponentsData', resumeComponentsList);
+            ElMessage({
+                message: '页面组件数据成功保存',
+                type: 'success',
+            })
+        }
+        
+        function exportComJSON(e) {
+        ElMessageBox.alert(`画布数据：${JSON.stringify(resumeComponentsList)}`, 'Title', {
+            confirmButtonText: 'OK',
+            callback: (action) => {
+            ElMessage({
+                type: 'info',
+                message: `画布数据已负责到剪切板`,
+            })
+            },
+        })
+
+        }
         return {
-            isReapeat,
+            isFullDisplay,
             goback,
             changeWidth,
             changeHeight,
@@ -74,6 +106,8 @@ export default defineComponent({
             clearAllEditor,
             currentResumeComponent,
             deleteComponent,
+            saveComData,
+            exportComJSON
         }
     },
 })

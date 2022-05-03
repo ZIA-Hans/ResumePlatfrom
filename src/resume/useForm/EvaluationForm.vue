@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="workVisible"
-    title="工作期望"
+    title="个人评价"
     width="40%"
     :before-close="handleClose"
     destroy-on-close

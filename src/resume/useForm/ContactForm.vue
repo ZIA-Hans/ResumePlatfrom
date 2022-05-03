@@ -4,6 +4,7 @@
     title="联系方式"
     width="40%"
     :before-close="handleClose"
+    destroy-on-close
   >
     <!-- <span>This is a message</span> -->
     <el-form

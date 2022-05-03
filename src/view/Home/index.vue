@@ -4,6 +4,7 @@
             <WinCenter />
             <Toolbar />
     </div>
+    <FullScreen />
 </template>
 
 <script>
@@ -11,12 +12,14 @@ import { defineComponent } from 'vue'
 import Material from './components/Material.vue'
 import WinCenter from './components/WinCenter/WinCenter.vue'
 import Toolbar from './components/Toolbar/Toolbar.vue'
+import FullScreen from './components/FullScreen.vue'
 
 export default defineComponent({
     components: {
         Material,
         WinCenter,
         Toolbar,
+        FullScreen,
     },
     setup() {
         

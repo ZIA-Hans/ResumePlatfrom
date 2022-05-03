@@ -67,7 +67,13 @@ export default defineComponent({
         ]
         option = reactive(option)
         function onRouterToLink(path) {
-            router.push(path)
+          // console.log(path);
+            if(path === '/Coders') {
+              // window.location.href = 'src/view/Login/Login.vue'
+              window.open('https://github.com/ZIA-Hans/ResumePlatfrom/tree/master','_blank')
+            } else {
+              router.push(path);
+            }
         }
 
         function gotoLogin(e) {
@@ -76,6 +82,11 @@ export default defineComponent({
         
         function quitLogin(e) {
           // window.localStorage.removeItem('loginUser');
+          ElMessage({
+            message: '成功退出当前用户',
+            type: 'success',
+          })
+          store.commit('setUserId', null);
           store.commit('setToken', null);
         }
         return {

@@ -16,6 +16,7 @@
     <ContactForm />
     <SkillForm />
     <WorkForm />
+    <EvaluationForm />
 
     <SExperienceForm />
     <PExperienceForm />
@@ -35,6 +36,7 @@ import CertificateForm from './useForm/CertificateForm.vue'
 import ContactForm from './useForm/ContactForm.vue'
 import SkillForm from './useForm/SkillForm.vue'
 import WorkForm from './useForm/WorkForm.vue'
+import EvaluationForm from './useForm/EvaluationForm.vue'
 import SExperienceForm from './useForm/SchoolExperience/index.vue'
 import PExperienceForm from './useForm/ProjectExperience/index.vue'
 import WExperienceForm from './useForm/WorkExperience/index.vue'
@@ -50,6 +52,7 @@ export default defineComponent({
         ContactForm,
         SkillForm,
         WorkForm,
+        EvaluationForm,
         SExperienceForm,
         PExperienceForm,
         WExperienceForm

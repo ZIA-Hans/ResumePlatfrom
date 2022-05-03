@@ -8,8 +8,8 @@
     :style="styleObj"
     >
         <slot name="icon"></slot>
-        <slot name="content" v-if="propsVal === ''">按钮</slot>
-        {{propsVal}}
+        <slot name="content" v-if="propVal === ''">按钮</slot>
+        {{propVal}}
     </button>
 </template>
 
@@ -25,7 +25,7 @@ export default defineComponent({
         },
         disabled: Boolean,
         border: Boolean,
-        propsVal: {
+        propVal: {
           type: String,
           default: ''
         }

@@ -22,11 +22,12 @@ const defaultState = {
     draft: {}
   },
   // @desc 表示拖拽进画布里的组件信息
-  resumeComponentsList: [],
+  resumeComponentsList: getItem('resumeComponentsData') ||  [],
   // 选中画布组件中的下标
   currentResumeComponentIndex: -1,
   // 选中画布组件对象的属性
-  currentResumeComponent: null
+  currentResumeComponent: null,
+  isFullDisplay: false
 }
 
 export default createStore({
@@ -36,6 +37,7 @@ export default createStore({
   mutations: {
     setUserId(state: typeof defaultState, userId: number) {
       state.userId = userId;
+      userId !== null ? setItem('userId', userId) : window.localStorage.removeItem('userId');
       // sessionStorage.setItem('userId', `${userId}`);
     },
     setToken(state: typeof defaultState, userInfo: any) {
@@ -156,16 +158,26 @@ export default createStore({
       };
       state.resumeComponentsList[currentComponentIndex] = moveComponent;
     },
+    // 更新组件的样式内容
     updateComponentProps(state: typeof defaultState, componentStyle: any) {
       state.currentResumeComponent.style = componentStyle;
     },
+    updateComponentInner(state: typeof defaultState, innerContent: string) {
+      state.currentResumeComponent.componentInnerText = innerContent;
+    },
+    // 清除当前选中组件
     clearCurrentComponentStatus(state: typeof defaultState) {
       state.currentResumeComponentIndex = -1;
       state.currentResumeComponent = null
     },
+    // 选中当前选中组件
     setCurrentComponentStatus(state: typeof defaultState, componentIndex: number) {
       state.currentResumeComponentIndex = componentIndex;
       state.currentResumeComponent = state.resumeComponentsList[componentIndex];
+    },
+    changeScreenStatus(state: typeof defaultState) {
+      let flag = state.isFullDisplay;
+      state.isFullDisplay = !flag;
     }
   },
 })

@@ -4,6 +4,7 @@
     title="教育信息"
     width="40%"
     :before-close="handleClose"
+    destroy-on-close
   >
     <!-- <span>This is a message</span> -->
     <el-form

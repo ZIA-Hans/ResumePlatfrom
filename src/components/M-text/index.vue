@@ -1,6 +1,6 @@
 <template>
     <div class="text" :style="styleObj">
-        text组件
+        {{propVal}}
     </div>
 </template>
 
@@ -9,7 +9,11 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     props: {
-        styleObj: Object
+        styleObj: Object,
+        propVal: {
+            type: String,
+            default: '文本内容'
+        }
     },
     setup() {
         
@@ -26,6 +30,6 @@ export default defineComponent({
     letter-spacing: 0px;
     border: 1px solid;
     align-content: center;
-    padding: 0 5px;
+    // padding: 0 5px;
 }
 </style>

@@ -10,8 +10,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import img1 from '@/assets/resumeImg/i.jpg'
-import img2 from '@/assets/resumeImg/o.jpg'
+import img1 from '@/assets/template/template1.jpg'
+import img2 from '@/assets/template/template2.jpg'
 import img3 from '@/assets/resumeImg/q.jpeg'
 import img4 from '@/assets/resumeImg/w.jpg'
 import img5 from '@/assets/resumeImg/z.png'

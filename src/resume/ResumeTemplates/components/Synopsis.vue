@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <p class="name">{{base.username}}</p>
-        <p class="job">前端工程师</p>
+        <p class="job">{{work.job}}</p>
         <p class="summary">
             {{evaluation}}
         </p>
@@ -16,9 +16,11 @@ export default defineComponent({
   setup() {
     const base = computed(() => store.state.ResumeData.base) 
     const evaluation = computed(() => store.state.ResumeData.evaluation)
+    const work = computed(() => store.state.ResumeData.work)
     return {
       base,
-      evaluation
+      evaluation,
+      work
     }
   },
 })
