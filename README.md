@@ -1,7 +1,12 @@
-# Vue 3 + Vite
+# Resume平台后台程序
+- 使用KOA2 + MySQL + typeORM编写
+    - KOA2作为主要框架使用MVC模式把各自责职分开，
+    - M——model层typeORM负责，同步数据库字段映射
+    - V——前端负责，后台只负责传输数据
+    - C——通过KOA2的路由，分析用户访问的是哪个接口，进入对应的控制器Controller执行操作
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## KOA2中间件
+- 编写一个记录日志的中间件，得益于KOA2的中间件执行的洋葱模型
+-思路
+    - 编写一个中间件，第一次执行，记录第一次的时间，直接next放行，等待后续操作执行完，
+    返回中间件，执行next下的代码，记录回来的时间，依次输出访问方法，状态码，访问时间
