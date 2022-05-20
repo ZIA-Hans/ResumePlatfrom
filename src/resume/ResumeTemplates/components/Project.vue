@@ -15,9 +15,10 @@
                 </div>
                 <div class="text">
                     <ul class="item-box">
-                        <li class="item-content" v-for="(content, cIndex) in item.parseContent" :key="cIndex">
+                        <!-- <li class="item-content" v-for="(content, cIndex) in item.parseContent" :key="cIndex">
                           <span>{{content}}</span>
-                        </li>
+                        </li> -->
+                        <p>{{item.content}}</p>
                     </ul>
                 </div>
             </li>

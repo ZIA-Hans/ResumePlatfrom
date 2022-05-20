@@ -30,7 +30,7 @@ export default defineComponent({
                 value === '' ? toPrintPdf() : toPrintPdf(value);
                 ElMessage({
                     type: 'success',
-                    message: `导出名称为${value}的简历`
+                    message: `导出名称为${value ? value : '未命名'}的简历`
                 })
             })
             .catch(() => {

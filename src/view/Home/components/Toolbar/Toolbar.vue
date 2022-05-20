@@ -37,8 +37,9 @@ export default defineComponent({
     },
     setup() {
         const havenTextModule = ['Button', 'AText'];
-        havenTextModule.includes
-        const height = document.body.clientHeight;
+        // havenTextModule.includes
+        // const height = document.body.clientHeight;
+        const height = window.innerHeight;
         const currentResumeComponent = computed(() => store.state.currentResumeComponent);
 
         return {

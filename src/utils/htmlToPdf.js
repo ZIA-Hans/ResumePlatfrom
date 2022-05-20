@@ -9,7 +9,9 @@ export function toPrintPdf(resumeName) {
     if(dom) {
         html2canvas(dom, {
             allowTaint: true,
+            useCORS: true
         }).then((canvas) => {
+            // console.log(canvas);
             let contentWidth = canvas.width;
             let contentHeight = canvas.height;
 

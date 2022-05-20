@@ -16,7 +16,7 @@
             </div>
             <div class="tips">一个模板简历制作平台, 让你的简历更加出众 ~</div>
             <div class="action">
-                <div class="item" v-for="item in option" :key="item.key" @click="onRouterToLink(item.path)">
+                <div class="item" v-for="item in (user ? option : unLoginOption)" :key="item.key" @click="onRouterToLink(item.path)">
                     {{item.name}}
                 </div>
             </div>
@@ -41,6 +41,19 @@ import store from '@/store'
 export default defineComponent({
     setup() {
         const user = computed(() => store.state.user);
+        
+        const unLoginOption = [
+          {
+                path: '/intrdation',
+                name: '介绍',
+                key: Date.now()
+          },
+          {
+                path: '/Coders',
+                name: '源码',
+                key: Date.now()
+          },
+        ] 
 
         let option = [
             {
@@ -67,9 +80,7 @@ export default defineComponent({
         ]
         option = reactive(option)
         function onRouterToLink(path) {
-          // console.log(path);
             if(path === '/Coders') {
-              // window.location.href = 'src/view/Login/Login.vue'
               window.open('https://github.com/ZIA-Hans/ResumePlatfrom/tree/master','_blank')
             } else {
               router.push(path);
@@ -91,6 +102,7 @@ export default defineComponent({
         }
         return {
             user,
+            unLoginOption,
             option,
             onRouterToLink,
             gotoLogin,

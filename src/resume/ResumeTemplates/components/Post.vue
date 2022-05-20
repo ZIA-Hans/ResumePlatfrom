@@ -10,7 +10,8 @@
                 <div class="right">
                     <p>{{experience.department}}</p>
                     <p>
-                        {{experience.parseContent.join(',')}}
+                        <!-- {{experience.parseContent.join(',')}} -->
+                        {{experience.content}}
                     </p>
                 </div>
             </li>
@@ -80,7 +81,7 @@ export default defineComponent({
       font-size: 13px;
       p:first-child {
         margin-bottom: 4px;
-        height: 18px;
+        // height: 18px;
         line-height: 18px;
         color: #01426f;
         font-weight: bold;

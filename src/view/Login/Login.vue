@@ -161,7 +161,6 @@ export default defineComponent({
                 })
                 
                 isLoding.value = true;
-                // const  {data}  = await httpMethod.post('/auth/login', loginForm);
                 const {data} = await httpMethod.post('/auth/login', loginForm);
                 isLoding.value = false;
                 store.commit('setUserId', data.id);

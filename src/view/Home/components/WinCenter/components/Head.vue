@@ -17,6 +17,7 @@
             <el-button plain @click="clearAllEditor" :disabled="editorComponentsList.length === 0">清空画布</el-button>
             <el-button plain  :disabled="editorComponentsList.length === 0" @click="saveComData">保存</el-button>
             <el-button plain @click="exportComJSON">导出画布数据</el-button>
+            <el-button plain @click="printContent">导出PDF</el-button>
     </div>
 </template>
 
@@ -26,6 +27,7 @@ import router from '@/router';
 import store from '@/store';
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { setItem } from '../../../../../utils/resumeUtils';
+import { toPrintPdf } from '../../../../../utils/htmlToPdf';
 
 export default defineComponent({
     props: {
@@ -39,7 +41,6 @@ export default defineComponent({
         }
     },
     setup(props, ctx) {
-        // const isReapeat = ref(false);
         const isFullDisplay = computed({
             get() {
                 return store.state.isFullDisplay
@@ -86,16 +87,29 @@ export default defineComponent({
         }
         
         function exportComJSON(e) {
-        ElMessageBox.alert(`画布数据：${JSON.stringify(resumeComponentsList)}`, 'Title', {
-            confirmButtonText: 'OK',
-            callback: (action) => {
-            ElMessage({
-                type: 'info',
-                message: `画布数据已负责到剪切板`,
+            ElMessageBox.alert(`画布数据：${JSON.stringify(resumeComponentsList)}`, 'Title', {
+                confirmButtonText: 'OK',
+                callback: (action) => {
+                    ElMessage({
+                        type: 'info',
+                        message: `画布数据已负责到剪切板`,
+                    })
+                },
             })
-            },
-        })
+        }
 
+        function printContent(e) {
+            ElMessageBox.prompt('导出简历名称为：')
+            .then(({value}) => {
+                value === '' ? toPrintPdf() : toPrintPdf(value);
+                ElMessage({
+                    type: 'success',
+                    message: `导出名称为${value ? value : '未命名'}的简历`
+                })
+            })
+            .catch(() => {
+
+            })
         }
         return {
             isFullDisplay,
@@ -107,7 +121,8 @@ export default defineComponent({
             currentResumeComponent,
             deleteComponent,
             saveComData,
-            exportComJSON
+            exportComJSON,
+            printContent
         }
     },
 })

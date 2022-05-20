@@ -45,7 +45,7 @@ let experienceList = computed(() => adapter.school(dataList.value));
 
 
 const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
+  ElMessageBox.confirm('是否要关闭当前弹窗？')
     .then(() => {
       hideWindows('schoolExperience')
       done()

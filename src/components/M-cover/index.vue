@@ -1,6 +1,6 @@
 <template>
     <div class="cover" :style="styleObj">
-        <img :src="propVal" :style="styleObj">
+        <img :src="propVal" :style="styleObj" crossorigin="anonymous" >
     </div>
     <!-- <img class="cover" :src="propVal" :style="styleObj"> -->
 </template>

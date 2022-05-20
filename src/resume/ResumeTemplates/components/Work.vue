@@ -9,8 +9,8 @@
                 </div>
                 <div class="right">
                     <p>{{work.department}}</p>
-                    <!-- <p>{{work.parseContent.join()}}</p> -->
-                    <p>{{work.content}}</p>
+                    <p v-for="(item, index) in work.content.split('\n')" :key="index">{{item}}</p>
+                    <!-- <p>{{work.content}}</p> -->
                 </div>
             </li>
         </ul>

@@ -12,7 +12,7 @@ const useLocalStorage = (name, value = {}) => {
     // })
 
     watch(localData, (val) => {
-        // console.log(val);
+        console.log(val);
         setItem(name, val);
         console.log(name, val);
     })

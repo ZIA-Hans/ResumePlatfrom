@@ -55,7 +55,7 @@ const handleClose = (done: () => void) => {
       })
   } 
   else {
-    ElMessageBox.confirm('Are you sure to close this dialog?')
+    ElMessageBox.confirm('是否要关闭当前弹窗？')
     .then(() => {
       hideWindows('workExperience');
       done()

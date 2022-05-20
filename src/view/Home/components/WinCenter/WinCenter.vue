@@ -59,6 +59,7 @@ export default defineComponent({
                 componentInnerText,
                 style: {
                     ...componentDomStyle,
+                    position: 'static',
                     left: `${offsetX}px`,
                     top: `${offsetY}px`,
                     zIndex: componentsData.value.length
@@ -95,6 +96,7 @@ export default defineComponent({
     background: #eee;
     width: 1000px;
     min-height: 100vh;
+    flex: 1;
     .drawContent {
         position: relative;
         background-color: #ffffff;

@@ -31,5 +31,6 @@ export default defineComponent({
     border: 1px solid;
     align-content: center;
     // padding: 0 5px;
+    word-break: break-all;
 }
 </style>
